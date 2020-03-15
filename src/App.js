@@ -1,12 +1,27 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { App2 } from "./App2";
+import { User } from "./components/user";
 
-function App() {
-  return (
+export function App(props) {
+	const userName = props.name && <h1>Yo! { props.name }</h1>
+	const userAge = props.age && <h3>User age { props.age }</h3>
+
+	return (
     <div className="App">
+	    {
+		    userName
+	    }
+	    {
+		    userName && userAge
+	    }
+	    {
+		    props.puppy || "нет питомца"
+	    }
+	    <User />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={ logo } className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -19,8 +34,15 @@ function App() {
           Learn React
         </a>
       </header>
+	    <App2 />
+	    <div>
+		    <h3>Here are children:</h3>
+		    {
+		    	props.children
+		    }
+	    </div>
     </div>
   );
 }
 
-export default App;
+
