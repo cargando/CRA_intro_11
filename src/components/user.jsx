@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as PropTypes from 'prop-types';
-import { UserName, Age, Address, Description, Gender } from "./components/misc";
-import * as Misc from "./components/misc";
+import { UserName, Age, Address, Description, Gender } from "./misc";
+import * as Misc from "./misc";
 
 
 
