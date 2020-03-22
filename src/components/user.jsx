@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import * as PropTypes from 'prop-types';
+import { UserName, Age, Address, Description, Gender } from "./components/misc";
+import * as Misc from "./components/misc";
 
 
 
@@ -119,22 +121,14 @@ export class User extends Component {
 	console.log("RND:", gender);
 		return (
 			<div style={ styles }>
-				<h3>User name: { name }</h3>
+				<UserName name={ name } />
 				<p>
-					Gender: { this.renderMale(gender) } <br />
-					Age: { age }<br />
-					Address: { address }<br />
+
 					{
 						!!puppies.length && this.renderPuppies()
 					}
 				</p>
-				<hr />
-				<p>
-					{
-						description
-					}
-				</p>
-				<hr />
+
 				<input
 					type="text"
 					name="name"

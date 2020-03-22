@@ -49,7 +49,7 @@ export function SimpleUser(props) {
 				Age: { age }<br />
 				Address: { address }<br />
 				{
-					!!puppies.length && renderPuppies()
+					renderPuppies(puppies)
 				}
 			</p>
 			<hr />

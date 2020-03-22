@@ -112,7 +112,7 @@ export function App(props) {
 		}
 
 		return (
-			<p>
+			<React.Fragment>
 				{
 					puppies.map((item, index, ms) => (
 						<React.Fragment key={ index }>
@@ -120,7 +120,7 @@ export function App(props) {
 						</React.Fragment>
 					))
 				}
-			</p>
+			</React.Fragment>
 		);
 	};
 
