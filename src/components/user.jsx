@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as PropTypes from 'prop-types';
-import { UserName, Age, Address, Description, Gender } from "./misc";
-import * as Misc from "./misc";
+import { all as Misc } from "./misc";
 
 
 
@@ -119,12 +118,19 @@ export class User extends Component {
 			margin: "20px",
 		};
 	console.log("RND:", gender);
+
+
+		const data = {
+			description,
+			puppies: "Хомячок, Попугай и галка",
+		};
+
 		return (
 			<div style={ styles }>
 
 
-				<UserName name={ name } />
-				<Gender gender={ gender } renderMale={ this.renderMale } />
+				<Misc.UserName name={ name } />
+				<Misc.Gender gender={ gender } renderMale={ this.renderMale } />
 				<Misc.Age age={ age } />
 				<Misc.Address address={ address } />
 				<p>
@@ -133,7 +139,8 @@ export class User extends Component {
 						!!puppies.length && this.renderPuppies()
 					}
 				</p>
-				<Misc.Description description={ description }/>
+
+				<Misc.Description description={ data.description } puppies={ data.puppies }/>
 
 
 				<input
@@ -141,6 +148,7 @@ export class User extends Component {
 					name="name"
 					value={ name }
 					onChange={ this.handleChange }
+					style={ { width: "180px" } }
 				/> <br />
 				<input
 					type="radio"

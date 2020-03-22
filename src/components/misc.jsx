@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function UserName({ name }) {
+function UserName({ name }) {
 	return (
 		<React.Fragment>
 			<h3>User name: { name }</h3>
@@ -8,31 +8,31 @@ export function UserName({ name }) {
 	);
 }
 
-export function Gender({renderMale, gender}) {
+function Gender({renderMale, gender}) {
 	return (
 		<React.Fragment>
-			Gender: { renderMale(gender) } <br />
+			<span>Gender: { renderMale(gender) }</span> <br />
 		</React.Fragment>
 	);
 }
 
-export function Age({age}) {
+function Age({age}) {
 	return (
 		<React.Fragment>
-			Age: { age }<br />
+			<span>Age: { age }</span><br />
 		</React.Fragment>
 	);
 }
 
-export function Address({address}) {
+function Address({address}) {
 	return (
 		<React.Fragment>
-			Address: { address }<br />
+			<span>Address: { address }</span><br />
 		</React.Fragment>
 	);
 }
 
-export function Description({description}) {
+function Description({ description, puppies }) {
 	return (
 		<React.Fragment>
 			<hr />
@@ -40,8 +40,18 @@ export function Description({description}) {
 				{
 					description
 				}
+				<br />
+				<small className="text-muted">{ puppies }</small>
 			</p>
 			<hr />
 		</React.Fragment>
 	);
 }
+
+export const all = {
+	UserName: React.memo(UserName),
+	Gender: React.memo(Gender),
+	Age: React.memo(Age),
+	Address: React.memo(Address),
+	Description: React.memo(Description),
+};
