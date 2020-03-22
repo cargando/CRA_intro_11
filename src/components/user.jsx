@@ -121,13 +121,20 @@ export class User extends Component {
 	console.log("RND:", gender);
 		return (
 			<div style={ styles }>
+
+
 				<UserName name={ name } />
+				<Gender gender={ gender } renderMale={ this.renderMale } />
+				<Misc.Age age={ age } />
+				<Misc.Address address={ address } />
 				<p>
 
 					{
 						!!puppies.length && this.renderPuppies()
 					}
 				</p>
+				<Misc.Description description={ description }/>
+
 
 				<input
 					type="text"
