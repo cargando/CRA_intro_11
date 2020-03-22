@@ -4,6 +4,7 @@ import './App.css';
 import { App2 } from "./App2";
 import { User } from "./components/user";
 import { SimpleUser } from "./components/simpleUser";
+import { SimpleUserTr } from "./components/simpleUserTr";
 
 export function App(props) {
 	const userName = props.name && <h1>Yo! { props.name }</h1>
@@ -140,6 +141,44 @@ export function App(props) {
 					/>))
 				}
 			</div>
+			<br />
+
+			<h1>User list table</h1>
+	    <table className="table table-striped">
+		    <thead>
+		    <tr>
+			    <th scope="col">#</th>
+			    <th scope="col">Name</th>
+			    <th scope="col">Gender</th>
+			    <th scope="col">Age</th>
+			    <th scope="col">Description</th>
+			    <th scope="col">Puppies</th>
+		    </tr>
+		    </thead>
+		    <tbody>
+		    {
+			    users.map(({
+				               id,
+				               name,
+				               gender,
+				               age,
+				               address,
+				               puppies,
+				               description,
+			               }) => (<SimpleUserTr
+				    key={ id }
+				    id={ id }
+				    name={ name }
+				    age={ age }
+				    address={ address }
+				    gender={ gender }
+				    puppies={ puppies }
+				    description={ description }
+			    />))
+		    }
+		    </tbody>
+	    </table>
+
 
       <header className="App-header">
         <img src={ logo } className="App-logo" alt="logo" />
