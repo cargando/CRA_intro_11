@@ -17,7 +17,7 @@ export function App(props) {
 			age: 30,
 			gender: "M",
 			address: "Asdfj laskjd flsjkd f",
-			puppies: [],
+			puppies: ['dog', "humster"],
 			description: "Какое-то описание",
 		}, {
 			id: 2,
@@ -25,7 +25,7 @@ export function App(props) {
 			age: 40,
 			gender: "M",
 			address: "ывра лыорвла ыорва f",
-			puppies: [],
+			puppies: ['kitty', 'parrot'],
 			description: "Какое-то описание 2",
 		}, {
 			id: 3,
@@ -33,7 +33,7 @@ export function App(props) {
 			age: 50,
 			gender: "M",
 			address: "sdfoij wlkejf skndf",
-			puppies: [],
+			puppies: ['parrot', 'kitty'],
 			description: "Какое-то описание 3",
 		}, {
 			id: 7,
@@ -41,7 +41,7 @@ export function App(props) {
 			age: 25,
 			gender: "F",
 			address: "oiuwe oro4i3 453i4 5",
-			puppies: [],
+			puppies: ['dog', 'kitty', 'parrot'],
 			description: "Какое-то описание 5",
 		}, {
 			id: 35,
@@ -49,7 +49,7 @@ export function App(props) {
 			age: 32,
 			gender: "А",
 			address: "456  43з56о дло дулцке",
-			puppies: [],
+			puppies: ['parrot'],
 			description: "Какое-то описание 5",
 		},
 
@@ -106,6 +106,48 @@ export function App(props) {
 	// 		description={ description }
 	// 	/>);
 
+	const renderPuppies = (puppies) => {
+		if (!Array.isArray(puppies)) {
+			return null;
+		}
+
+		return (
+			<p>
+				{
+					puppies.map((item, index, ms) => (
+						<React.Fragment key={ index }>
+							<small>{ item }</small>{ ms[index + 1] ? <React.Fragment>, <br /></React.Fragment> : null }
+						</React.Fragment>
+					))
+				}
+			</p>
+		);
+	};
+
+	const renderTr = (userInfo) => {
+
+		const {
+			id,
+			name,
+			gender,
+			age,
+			address,
+			puppies,
+			description,
+		} = userInfo;
+
+		return (<SimpleUserTr
+			key={ id }
+			id={ id }
+			name={ name }
+			age={ age }
+			address={ address }
+			gender={ gender }
+			puppies={ puppies }
+			description={ description }
+			renderPuppies={ renderPuppies }
+		/>);
+	};
 
 	return (
     <div className="App">
@@ -138,6 +180,7 @@ export function App(props) {
 						gender={ gender }
 						puppies={ puppies }
 						description={ description }
+						renderPuppies={ renderPuppies }
 					/>))
 				}
 			</div>
@@ -157,24 +200,7 @@ export function App(props) {
 		    </thead>
 		    <tbody>
 		    {
-			    users.map(({
-				               id,
-				               name,
-				               gender,
-				               age,
-				               address,
-				               puppies,
-				               description,
-			               }) => (<SimpleUserTr
-				    key={ id }
-				    id={ id }
-				    name={ name }
-				    age={ age }
-				    address={ address }
-				    gender={ gender }
-				    puppies={ puppies }
-				    description={ description }
-			    />))
+			    users.map(renderTr)
 		    }
 		    </tbody>
 	    </table>

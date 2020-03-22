@@ -11,6 +11,7 @@ export function SimpleUserTr(props) {
 		address,
 		puppies,
 		description,
+		renderPuppies,
 	} = props;
 
 
@@ -28,9 +29,8 @@ export function SimpleUserTr(props) {
 			<td>{ name }</td>
 			<td>{ renderMale(gender) }</td>
 			<td>{ age }</td>
-			<td>{ address }</td>
-			<td>{ description }</td>
-			<td>{ !!puppies.length && this.renderPuppies() }</td>
+			<td>{ address } <br /><small className="text-muted">{ description }</small></td>
+			<td>{ renderPuppies(puppies) }</td>
 		</tr>
 	);
 }
@@ -39,10 +39,12 @@ SimpleUserTr.propTypes = {
 	id: PropTypes.number.isRequired,
 	name: PropTypes.string.isRequired,
 	age: PropTypes.number.isRequired,
+	renderPuppies: PropTypes.func.isRequired,
 	gender: PropTypes.string,
 	address: PropTypes.string,
 	description: PropTypes.string,
 	puppies: PropTypes.array,
+
 };
 
 SimpleUserTr.defaultProps = {

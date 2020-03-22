@@ -21,6 +21,7 @@ export function SimpleUser(props) {
 		address,
 		puppies,
 		description,
+		renderPuppies,
 	} = props;
 
 	const styles = {
@@ -48,7 +49,7 @@ export function SimpleUser(props) {
 				Age: { age }<br />
 				Address: { address }<br />
 				{
-					!!puppies.length && this.renderPuppies()
+					!!puppies.length && renderPuppies()
 				}
 			</p>
 			<hr />
@@ -65,6 +66,7 @@ export function SimpleUser(props) {
 SimpleUser.propTypes = {
 	name: PropTypes.string.isRequired,
 	age: PropTypes.number.isRequired,
+	renderPuppies: PropTypes.func.isRequired,
 	gender: PropTypes.string,
 	address: PropTypes.string,
 	description: PropTypes.string,
