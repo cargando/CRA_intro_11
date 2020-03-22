@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as PropTypes from 'prop-types';
 
 
-// export function simpleUser({
+// export function SimpleUser({
 // 	                           name,
 // 	                           gender,
 // 	                           age,
@@ -10,7 +10,9 @@ import * as PropTypes from 'prop-types';
 // 	                           puppies,
 // 	                           description,
 //                            }) {
-export function simpleUser(props) {
+
+
+export function SimpleUser(props) {
 
 	const {
 		name,
@@ -29,11 +31,20 @@ export function simpleUser(props) {
 		margin: "20px",
 	};
 
+	const renderMale = (gender) => {
+		return ({
+			M: "Male",
+			F: "Female",
+		})[gender];
+
+	};
+
+
 	return (
 		<div style={ styles }>
 			<h3>User name: { name }</h3>
 			<p>
-				Gender: { this.renderMale(gender) } <br />
+				Gender: { renderMale(gender) } <br />
 				Age: { age }<br />
 				Address: { address }<br />
 				{
@@ -51,7 +62,7 @@ export function simpleUser(props) {
 	);
 }
 
-simpleUser.propTypes = {
+SimpleUser.propTypes = {
 	name: PropTypes.string.isRequired,
 	age: PropTypes.number.isRequired,
 	gender: PropTypes.string,
@@ -60,7 +71,7 @@ simpleUser.propTypes = {
 	puppies: PropTypes.array,
 };
 
-simpleUser.defaultProps = {
+SimpleUser.defaultProps = {
 	puppies: [],
 	address: null,
 	gender: null,

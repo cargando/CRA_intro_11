@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { App2 } from "./App2";
 import { User } from "./components/user";
+import { SimpleUser } from "./components/simpleUser";
 
 export function App(props) {
 	const userName = props.name && <h1>Yo! { props.name }</h1>
@@ -20,6 +21,9 @@ export function App(props) {
 		    props.puppy || "нет питомца"
 	    }
 	    <User description="Some text" />
+
+	    <SimpleUser name="Иваныч" age={ 35 } />
+
       <header className="App-header">
         <img src={ logo } className="App-logo" alt="logo" />
         <p>
