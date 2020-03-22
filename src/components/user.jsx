@@ -1,14 +1,15 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import * as PropTypes from 'prop-types';
-import { all as Misc } from "./misc";
+// import { all as Misc } from "./misc";
+import * as Misc from "./misc_arrow";
 
 
-
-export class User extends Component {
+export class User extends PureComponent {
 
 	static propTypes = {
 		description: PropTypes.string.isRequired,
 		id: PropTypes.number,
+		setCursor: PropTypes.bool,
 	};
 
 	static defaultProps = {
@@ -22,8 +23,14 @@ export class User extends Component {
 	// 		address: "Moscow, st.Stroiteley 50, flat 200",
 	// 	};
 
+	// shouldComponentUpdate(nextProps, nextState) {
+	// 	return nextState.name === this.state.name;
+	// }
+
 	constructor(props) {
 		super(props);
+
+		this.inputRef = React.createRef();
 
 		this.state = {
 			name: "Dmitry",
@@ -32,6 +39,13 @@ export class User extends Component {
 			puppies: [],
 			address: "Moscow, st.Stroiteley 50, flat 200",
 		}
+	}
+
+	componentDidMount() {
+		if (this.props.setCursor) {
+			this.inputRef.current.focus();
+		}
+
 	}
 
 	renderPuppies = () => {
@@ -144,6 +158,7 @@ export class User extends Component {
 
 
 				<input
+					ref={ this.inputRef }
 					type="text"
 					name="name"
 					value={ name }

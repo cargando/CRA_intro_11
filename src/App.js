@@ -160,7 +160,10 @@ export function App(props) {
 	    {
 		    props.puppy || "нет питомца"
 	    }
-	    <User description="Some text" />
+
+
+	    <User setCursor={ true } description="Some text" />
+
 
 			<div style={ {display: "flex"} }>
 				{
