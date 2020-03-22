@@ -19,7 +19,7 @@ export function App(props) {
 	    {
 		    props.puppy || "нет питомца"
 	    }
-	    <User description="Какое-то описание для юзера" />
+	    <User description="Some text" />
       <header className="App-header">
         <img src={ logo } className="App-logo" alt="logo" />
         <p>

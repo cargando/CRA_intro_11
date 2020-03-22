@@ -53,6 +53,22 @@ export class User extends Component {
 		this.setState((prevState) => ({age: type.toUpperCase() === "UP" ? prevState.age + 1 : prevState.age - 1}) );
 	};
 
+	handleClickAgeAlternate = (type = "down") => {
+
+		return function (e) {
+				this.setState(
+					(prevState) => ({age: type.toUpperCase() === "UP" ? prevState.age + 1 : prevState.age - 1})
+				);
+			};
+	};
+
+
+	handleClickAgeCycle = (e, type) => {
+		this.setState((prevState) => ({age: type.toUpperCase() === "UP" ? prevState.age + 1 : prevState.age - 1}) );
+	};
+
+
+
 	handleChange = (e) => {
 		// const { target }  = e;
 		// const { value } = target;
@@ -91,6 +107,8 @@ export class User extends Component {
 			address = "",
 		} = this.state;
 
+		const { description } = this.props;
+
 		const styles = {
 			border: "2px solid grey",
 			borderRadius: "5px",
@@ -113,11 +131,16 @@ export class User extends Component {
 				<hr />
 				<p>
 					{
-						this.props.description
+						description
 					}
 				</p>
 				<hr />
-				<input type="text" name="name" value={ name } onChange={ this.handleChange } /> <br />
+				<input
+					type="text"
+					name="name"
+					value={ name }
+					onChange={ this.handleChange }
+				/> <br />
 				<input
 					type="radio"
 					name="gender"
@@ -133,7 +156,7 @@ export class User extends Component {
 
 				<hr />
 				<div>
-					<button onClick={ this.handleClickAge("up") }>Up</button> &nbsp;
+					<button onClick={ (e) => this.handleClickAgeCycle(e, "up") }>Up</button> &nbsp;
 					<button onClick={ this.handleClickAge() }>Down</button>
 				</div>
 			</div>
